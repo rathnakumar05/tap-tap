@@ -57,7 +57,7 @@ function Friends() {
           </button>
         </div>
 
-        <div className="h-[65px] flex items-center w-[80%] bg-[#6ABE6A] rounded-[19px] mt-2 shadow-[0_0_24px_-6px_#6ABE6A] px-4 mx-auto">
+        <div className="h-[65px] flex items-center w-[90%] bg-[#6ABE6A] rounded-[19px] mt-2 shadow-[0_0_24px_-6px_#6ABE6A] px-4 mx-auto">
           <img
             src={coinIcon}
             className="w-12 h-12 m-1 border-2 border-[#0B2113] rounded-full basis-[10%]"

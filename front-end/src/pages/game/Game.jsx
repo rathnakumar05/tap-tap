@@ -31,7 +31,7 @@ function Game() {
               setIsLoading(false);
               navigate("/game/earn");
             } else {
-              throw new Error("Auth_token not has been set");
+              throw new Error("auth_token has not been set");
             }
           }
         })
