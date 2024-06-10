@@ -1,0 +1,6 @@
+SECRET_KEY="xxxx-xxx-xxx";
+
+MYSQL_HOST="xxxx"
+MYSQL_DB="xxxx"
+MYSQL_USER="xxxx"
+MYSQL_PASSWORD="xxxx"
