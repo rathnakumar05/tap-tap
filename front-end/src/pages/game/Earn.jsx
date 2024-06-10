@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import GameLayout from "../layout/GameLayout";
+
+import { getAuth } from "../../utlis/localstorage";
 
 import PlayIcon from "../../assets/img/play-icon.svg";
 import coinBackgroundImg from "../../assets/img/coin-background.png";
@@ -12,7 +16,34 @@ import CoinImg from "../../assets/img/coin.png";
 import BoltIcon from "../../assets/img/bolt-icon.svg";
 
 function Earn() {
+  const navigate = useNavigate();
   const [clicks, setClicks] = useState([]);
+
+  async function test() {
+    const token = getAuth();
+    axios
+      .get("/api/game", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          navigate("/game");
+        }
+      });
+  }
+
+  useEffect(function () {
+    let unmounted = false;
+    test();
+    return () => {
+      unmounted = true;
+    };
+  }, []);
 
   const handleTouchStart = (e) => {
     const touch = e.touches[0];

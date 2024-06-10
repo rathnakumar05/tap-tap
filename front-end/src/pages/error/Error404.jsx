@@ -1,7 +1,3 @@
-import { useEffect } from "react";
-
-import { setBodyClass, removeBodyClass } from "../../utlis/ui.js";
-
 function Error404() {
   return (
     <main className="text-center">
