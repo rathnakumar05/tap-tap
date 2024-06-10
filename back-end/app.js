@@ -32,7 +32,6 @@ app.use(function (req, res, next) {
 
 //500 handler
 app.use(function (err, req, res, next) {
-  console.log(err);
   return res.status(err.status || 500).json({
     statusCode: 500,
     status: "error",

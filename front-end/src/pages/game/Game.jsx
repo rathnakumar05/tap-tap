@@ -22,9 +22,12 @@ function Game() {
         .then((res) => {
           var data = res.data;
           if (data.token) {
-            setAuth(data.token);
-            setIsLoading(false);
-            navigate("/game/earn");
+            if (setAuth(data.token)) {
+              setIsLoading(false);
+              navigate("/game/earn");
+            } else {
+              throw new Error("Auth_token not has been set");
+            }
           }
         })
         .catch((err) => {

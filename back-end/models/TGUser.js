@@ -1,4 +1,8 @@
-const { sequelize, DataTypes, Sequelize } = require("../db/mysql-sequelize");
+const {
+  sequelize,
+  DataTypes,
+  Sequelize,
+} = require("../config/mysql-sequelize");
 
 const TGUser = sequelize.define(
   "TGUser",
