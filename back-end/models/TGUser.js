@@ -32,7 +32,11 @@ const TGUser = sequelize.define(
       type: DataTypes.STRING(30),
       allowNull: true,
     },
-    referral: {
+    referral_code: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+    },
+    referral_by: {
       type: DataTypes.STRING(100),
       allowNull: true,
     },

@@ -12,8 +12,8 @@ function GameLayout({ children }) {
   return (
     <TGAuth>
       {tg_user !== false && (
-        <div className="container text-center bg-black h-screen flex flex-col items-center px-2">
-          <div className="top-bar w-full flex flex-row items-center justify-between py-2">
+        <div className="container text-center h-screen flex flex-col items-center px-2">
+          <div className="top-bar w-full flex flex-row items-center justify-between py-2 h-[74px]">
             <div className="flex flex-row justify-between align-items-center w-full">
               <div className="flex flex-row items-center justify-center">
                 <img
@@ -22,21 +22,23 @@ function GameLayout({ children }) {
                   alt="Profile"
                   width="50"
                 />
-                <span className="ml-2 p-2 text-white text-xl">Test</span>
+                <span className="ml-2 p-2 text-white text-xl">
+                  {tg_user.username}
+                </span>
               </div>
               <div className="menu flex flex-row items-center justify-center gap-4">
-                <a href="" className=" ">
-                  <img
-                    className="w-12 h-12 p-2 rounded-xl bg-[#0B2113]"
-                    src={walletIcon}
-                  />
-                </a>
-                <a href="" className=" ">
-                  <img
-                    className="w-12 h-12 p-2 rounded-xl bg-[#0B2113]"
-                    src={questionIcon}
-                  />
-                </a>
+                {/* <a href="" className=" "> */}
+                <img
+                  className="w-12 h-12 p-2 rounded-xl bg-[#0B2113]"
+                  src={walletIcon}
+                />
+                {/* </a> */}
+                {/* <a href="" className=" "> */}
+                <img
+                  className="w-12 h-12 p-2 rounded-xl bg-[#0B2113]"
+                  src={questionIcon}
+                />
+                {/* </a> */}
               </div>
             </div>
           </div>

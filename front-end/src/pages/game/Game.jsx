@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Error500 from "../error/Error500";
@@ -9,6 +9,10 @@ import { setAuth } from "../../utlis/localstorage";
 
 function Game() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const ref = queryParams.get("tgWebAppStartParam");
+
   const [error, setError] = useState(false);
   const [isTg, setIsTg] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +21,7 @@ function Game() {
     let tg_user = getTGUser();
     setIsTg(tg_user !== false);
     if (tg_user !== false) {
+      tg_user["ref"] = ref;
       axios
         .post("/api/tg/auth/", tg_user)
         .then((res) => {

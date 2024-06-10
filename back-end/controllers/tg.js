@@ -1,5 +1,7 @@
 var jwt = require("jsonwebtoken");
 const _ = require("lodash");
+const { v4: uuidv4 } = require("uuid");
+
 var TGUser = require("../models/TGUser");
 
 async function auth(req, res, next) {
@@ -10,6 +12,7 @@ async function auth(req, res, next) {
       first_name = "",
       last_name = "",
       language_code = "",
+      ref = "",
     } = req.body;
 
     if (!_.isNil(id)) {
@@ -20,12 +23,15 @@ async function auth(req, res, next) {
       });
 
       if (!tg_user) {
+        var ref_code = uuidv4().replace(/-/g, "");
         var tg_user_data = {
           userid: id,
           username: username,
           first_name: first_name,
           last_name: last_name,
           language_code: language_code,
+          referral_by: ref,
+          referral_code: ref_code,
         };
         var create_tg_user = await TGUser.create(tg_user_data);
         if (!create_tg_user) {

@@ -71,17 +71,14 @@ function Earn() {
         className="hero w-full h-28  mb-4 rounded-3xl bg-no-repeat bg-cover flex flex-col items-center justify-center"
         style={{ backgroundImage: `url(${heroBackgroundImg})` }}
       >
-        <a
-          href=""
-          className="flex flex-row items-center justify-center gap-2 text-xl font-black bg-[#181A1B]  rounded-full text-[#0FF378] py-2 px-2 pr-4"
-        >
+        <span className="flex flex-row items-center justify-center gap-2 text-xl font-black bg-[#181A1B]  rounded-full text-[#0FF378] py-2 px-2 pr-4">
           <img
             src={PlayIcon}
             className="w-8  h-8  object-contain rounded-full"
             alt=""
           />{" "}
           PLAY
-        </a>
+        </span>
       </div>
       <div
         className={`coinsection w-full rounded-3xl flex flex-col items-center justify-center p-4 relative select-none mb-2`}
@@ -90,13 +87,10 @@ function Earn() {
         }}
       >
         <div className="topbar bg-[#0B2113] border-black border-2 w-full py-2 absolute top-0 z-20 rounded-3xl">
-          <a
-            href=""
-            className="miner flex flex-col items-center justify-center  absolute my-2 ml-4"
-          >
+          <span className="miner flex flex-col items-center justify-center  absolute my-2 ml-4">
             <img src={RobotImg} alt="" className="w-10 h-10" />
             <h1 className="font-bold text-sm text-white">LVL 1</h1>
-          </a>
+          </span>
           <div className="flex flex-col items-center justify-center gap-2">
             <h1 className="font-bold text-sm text-white">YOU'VE EARNED</h1>
             <h1 className="font-bold text-3xl text-white flex flex-row gap-2 items-center justify-center">

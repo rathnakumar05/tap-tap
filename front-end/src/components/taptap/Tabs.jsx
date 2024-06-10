@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import TokenImg from "../../assets/img/token.png";
 import FriendImg from "../../assets/img/friends.svg";
@@ -9,7 +8,7 @@ import LeaderBoardImg from "../../assets/img/leaderboard.svg";
 
 let tabs = [
   { id: "Earn", label: "Earn", img: TokenImg, path: "/game/earn" },
-  { id: "Friends", label: "Friends", img: FriendImg, path: "/game/friend" },
+  { id: "Friends", label: "Friends", img: FriendImg, path: "/game/friends" },
   { id: "Reward", label: "Reward", img: GiftImg, path: "/game/reward" },
   { id: "Tasks", label: "Tasks", img: TaskImg, path: "/game/tasks" },
   {
@@ -21,42 +20,30 @@ let tabs = [
 ];
 
 export default function Tabs() {
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab.id);
-  };
-
+  const location = useLocation();
   return (
-    <div className="flex space-x-1 mt-auto p-2 bg-[#0B0B0B] rounded-2xl w-full mb-2 justify-between">
-      {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => handleTabClick(tab)}
-          className={`${
-            activeTab === tab.id ? "" : "hover:text-white/60"
-          } relative rounded-xl px-3 py-1 text-xs font-medium text-white transition flex flex-col items-center justify-center`}
-          style={{
-            WebkitTapHighlightColor: "transparent",
-          }}
-        >
-          <img src={tab.img} alt="" className="z-20 w-8 h-8 object-center" />
-          <h1
-            className={`${
-              activeTab === tab.id ? "text-[#0B0B0B] font-bold" : " text-white"
-            } z-20 text-xs`}
+    <div className="flex z-50 w-full h-16 mt-auto max-w-lg mb-2  bg-[#0B0B0B]  rounded-full  bottom-4 left-1/2 sticky">
+      <div className=" h-full w-full flex flex-row justify-between gap-1">
+        {tabs.map((tab) => (
+          <Link
+            to={tab.path}
+            key={tab.id}
+            className={`inline-flex flex-col items-center justify-center p-5 rounded-full  group ${
+              location.pathname === tab.path ? "bg-[#0FF378]" : ""
+            }`}
           >
-            {tab.label}
-          </h1>
-          {activeTab === tab.id && (
-            <motion.span
-              layoutId="bubble"
-              className="absolute inset-0 z-0 bg-[#0FF378] mix-blend-normal rounded-xl"
-              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            <img
+              className={`w-6 h-6 mb-1 text-gray-500  group-hover:text-blue-600 ${
+                location.pathname === tab.path && tab.id != "playarea"
+                  ? "invert"
+                  : ""
+              }`}
+              src={tab.img}
             />
-          )}
-        </button>
-      ))}
+            <span className="sr-only">{tab.label}</span>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
